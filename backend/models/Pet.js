@@ -8,6 +8,7 @@ const Pet = mongoose.model(
       name: { type: String, required: true },
       age: { type: Number, required: true },
       weight: { type: Number, required: true },
+      sex: { type: String, required: true },
       color: { type: String, required: true },
       image: { type: Array, required: true },
       available: { type: Boolean },

@@ -8,12 +8,14 @@ module.exports = class PetController {
   static async create(req, res) {
     const { name, age, weight, sex, color } = req.body;
 
+    const images = req.files;
+
     let available = true;
 
     // Images upload
 
     // Validations
-    if (!name && !age && !weight && !sex && !color) {
+    if (!name && !age && !weight && !sex && !color && !images) {
       res.status(422).json({
         message: "Preencha TODOS os campos antes de continuar!",
       });
@@ -55,6 +57,15 @@ module.exports = class PetController {
       return;
     }
 
+    console.log(images);
+
+    if (images.length === 0) {
+      res.status(422).json({
+        message: "As imagens do animal são obrigatórias!",
+      });
+      return;
+    }
+
     // Pet owner
     const token = getToken(req);
     const owner = await getUserByToken(token);
@@ -77,7 +88,9 @@ module.exports = class PetController {
       },
     });
 
-    console.log(pet);
+    images.map((image) => {
+      pet.images.push(image.filename);
+    });
 
     try {
       const newPet = await pet.save();

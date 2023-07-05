@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 // Helpers
 const createUserToken = require("../helpers/create-users-token");
 const getToken = require("../helpers/get-token");
+const getUserByToken = require("../helpers/get-user-by-token");
 
 module.exports = class UserController {
   static async register(req, res) {
@@ -26,7 +27,7 @@ module.exports = class UserController {
 
     if (!email) {
       res.status(422).json({
-        message: "O EMAIL é obrigatório!",
+        message: "O E-MAIL é obrigatório!",
       });
       return;
     }
@@ -64,7 +65,7 @@ module.exports = class UserController {
 
     if (userExist) {
       res.status(422).json({
-        message: "Este EMAIL já está sendo utilizado!",
+        message: "Este E-MAIL já está sendo utilizado!",
       });
       return;
     }
@@ -102,7 +103,7 @@ module.exports = class UserController {
 
     if (!email) {
       res.status(422).json({
-        message: "O EMAIL é obrigatório!",
+        message: "O E-MAIL é obrigatório!",
       });
       return;
     }
@@ -119,7 +120,7 @@ module.exports = class UserController {
 
     if (!user) {
       res.status(422).json({
-        message: "Usuário não encontrado!",
+        message: "E-mail não encontrado!",
       });
       return;
     }
@@ -161,14 +162,109 @@ module.exports = class UserController {
       res.status(422).json({
         message: "Usuário não encontrado!",
       });
+      return;
     } else {
       res.status(200).json({ user });
     }
   }
 
   static async editUser(req, res) {
-    res.status(200).json({
-      message: "Deu certo o update",
-    });
+    const id = req.params.id;
+
+    const token = getToken(req);
+    const user = await getUserByToken(token);
+
+    const { name, email, phone, password, confirmPassword } = req.body;
+
+    let image = "";
+
+    // Validations
+    if (!name && !email && !password && !confirmPassword) {
+      res.status(422).json({
+        message: "Preencha TODOS os campos antes de continuar!",
+      });
+      return;
+    }
+
+    if (!name) {
+      res.status(422).json({
+        message: "O NOME é obrigatório!",
+      });
+      return;
+    }
+
+    user.name = name;
+
+    if (!email) {
+      res.status(422).json({
+        message: "O E-MAIL é obrigatório!",
+      });
+      return;
+    }
+
+    // Check if email is already in use
+    const userExist = await User.findOne({ email: email });
+
+    if (user.email !== email && userExist) {
+      res.status(422).json({
+        message: "Este e-mail já está em uso!",
+      });
+      return;
+    }
+
+    user.email = email;
+
+    if (!phone) {
+      res.status(422).json({
+        message: "O TELEFONE é obrigatório!",
+      });
+      return;
+    }
+
+    user.phone = phone;
+
+    if (!password) {
+      res.status(422).json({
+        message: "A SENHA é obrigatória!",
+      });
+      return;
+    }
+
+    if (!confirmPassword) {
+      res.status(422).json({
+        message: "Você deve confirmar sua senha antes de continuar!",
+      });
+      return;
+    }
+
+    if (confirmPassword !== password) {
+      res.status(422).json({
+        message: "As senhas não coincidem!",
+      });
+      return;
+    } else if (password === confirmPassword && password !== null) {
+      // Creating new password
+      const salt = await bcrypt.genSalt(12);
+      const passwordHash = await bcrypt.hash(password, salt);
+
+      user.password = passwordHash;
+    }
+
+    try {
+      await User.findOneAndUpdate(
+        { _id: user._id },
+        { $set: user },
+        { new: true }
+      );
+
+      res.status(200).json({
+        message: "Usuário atualizado com sucesso!",
+      });
+    } catch (error) {
+      res.status(500).json({
+        message: error,
+      });
+      return;
+    }
   }
 };

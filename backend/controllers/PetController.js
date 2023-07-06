@@ -161,4 +161,43 @@ module.exports = class PetController {
       pet,
     });
   }
+
+  static async deletePetById(req, res) {
+    const id = req.params.id;
+
+    if (!ObjectId.isValidObjectId(id)) {
+      res.status(422).json({
+        message: "O ID é inválido!",
+      });
+      return;
+    }
+
+    // Check if pet exist
+    const pet = await Pet.findOne({ _id: id });
+
+    if (!pet) {
+      res.status(404).json({
+        message: "Este pet não está disponível!",
+      });
+      return;
+    }
+
+    // Check if logged in user registered the pet
+    const token = getToken(req);
+    const user = await getUserByToken(token);
+
+    if (pet.user._id.toString() !== user._id.toString()) {
+      res.status(422).json({
+        message:
+          "Ocorreu um erro ao processar sua solicitação! Tente novamente mais tarde.",
+      });
+      return;
+    }
+
+    await Pet.deleteOne({ _id: id });
+
+    res.status(200).json({
+      message: "Pet removido com sucesso!",
+    });
+  }
 };

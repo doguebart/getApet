@@ -303,4 +303,52 @@ module.exports = class PetController {
       message: "Pet atualizado com sucesso!",
     });
   }
+
+  static async schedule(req, res) {
+    const id = req.params.id;
+
+    // Check if pet exist
+    const pet = await Pet.findOne({ _id: id });
+
+    if (!pet) {
+      res.status(404).json({
+        message: "Este pet não está disponível!",
+      });
+      return;
+    }
+
+    // Check if user registered the pet
+    const token = getToken(req);
+    const user = await getUserByToken(token);
+
+    if (pet.user._id.toString() === user._id.toString()) {
+      res.status(422).json({
+        message: "Você não pode agendar uma visita ao seu proprio pet!",
+      });
+      return;
+    }
+
+    // Check if user has already schedule a visit
+    if (pet.adopter) {
+      if (pet.adopter._id.toString() === user._id.toString()) {
+        res.status(422).json({
+          message: "Você já agendou uma visita a este pet!",
+        });
+        return;
+      }
+    }
+
+    // Add user as adopter
+    pet.adopter = {
+      _id: user._id,
+      name: user.name,
+      image: user.image,
+    };
+
+    await Pet.findByIdAndUpdate(id, pet);
+
+    res.status(200).json({
+      message: `A visita foi agendada com sucesso! Entre em contato com ${pet.user.name} pelo telefone ${pet.user.phone}`,
+    });
+  }
 };

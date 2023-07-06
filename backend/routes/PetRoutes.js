@@ -18,5 +18,11 @@ router.get("/mypets", verifyToken, PetController.getAllUserPets);
 router.get("/myadoptions", verifyToken, PetController.userAdoptions);
 router.get("/:id", PetController.getPetById);
 router.delete("/:id", verifyToken, PetController.deletePetById);
+router.patch(
+  "/:id",
+  verifyToken,
+  imageUpload.array("images"),
+  PetController.updatePet
+);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "./styles";
 
-import bgImage from '../../assets/image/Rectangle.png'
+import bgImage from "../../assets/image/Rectangle.png";
 
 function Home() {
   return (
@@ -10,6 +10,7 @@ function Home() {
         <div className="background-image">
           <img src={bgImage} alt="Dog image" />
         </div>
+        <h1>Adote amor: encontre seu companheiro peludo!</h1>
       </section>
     </Container>
   );

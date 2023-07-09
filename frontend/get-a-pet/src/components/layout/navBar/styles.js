@@ -53,4 +53,41 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 1024px) {
+    .nav {
+      .adopt {
+        a {
+          font-size: 1.1rem;
+        }
+      }
+
+      .login {
+        a {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .brand img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .nav {
+      .adopt {
+        a {
+          font-size: 0.8rem;
+        }
+      }
+
+      .login {
+        a {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
 `;

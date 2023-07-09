@@ -40,6 +40,24 @@ export const Container = styled.div`
       margin: 1em;
 
       h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1em;
+      }
+
+      a {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .footer-column {
+      margin: 1em;
+
+      h2 {
         font-size: 1rem;
         margin-bottom: 1em;
       }

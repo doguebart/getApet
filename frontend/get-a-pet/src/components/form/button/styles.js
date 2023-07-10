@@ -18,4 +18,16 @@ export const Container = styled.div`
     opacity: 70%;
     transition: 0.2s;
   }
+
+  @media screen and (max-width: 1024px) {
+    button {
+      padding: 2em;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    button {
+      padding: 1em;
+    }
+  }
 `;

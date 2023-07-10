@@ -10,4 +10,16 @@ export const Container = styled.div`
     border-radius: 5px;
     background-color: transparent;
   }
+
+  @media screen and (max-width: 1024px) {
+    input {
+      padding: 2em;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    input {
+      padding: 1em;
+    }
+  }
 `;

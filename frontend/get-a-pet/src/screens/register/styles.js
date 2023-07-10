@@ -26,7 +26,7 @@ export const Container = styled.div`
     align-items: center;
 
     h2 {
-      max-width: 20%;
+      max-width: 100%;
       color: #141414;
       border-bottom: 3px solid #dadada;
       margin-bottom: 1em;
@@ -48,6 +48,37 @@ export const Container = styled.div`
           opacity: 70%;
           transition: 0.2s;
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .form-container {
+      h2 {
+        max-width: 50%;
+      }
+
+      form {
+        width: 100%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .img-container {
+      display: none;
+    }
+
+    .form-container {
+      width: 100%;
+
+      h2 {
+        max-width: 100%;
+        font-size: 1.2rem;
+      }
+
+      form {
+        width: 100%;
       }
     }
   }

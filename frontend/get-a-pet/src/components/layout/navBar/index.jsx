@@ -15,6 +15,9 @@ const NavBar = () => {
         <div className="adopt">
           <Link to="/">ADOTAR</Link>
         </div>
+        <div className="adopt">
+          <Link to="/Register">REGISTRAR</Link>
+        </div>
         <div className="login">
           <Link to="/Login">ENTRAR</Link>
         </div>

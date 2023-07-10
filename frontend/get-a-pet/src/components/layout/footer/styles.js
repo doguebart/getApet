@@ -7,6 +7,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1em;
+  border-top: 1px solid #dadada;
 
   .footer-column {
     max-width: 300px;
@@ -16,11 +17,13 @@ export const Container = styled.div`
     align-items: left;
 
     h2 {
+      font-size: 1rem;
       border-bottom: 3px solid #dadada;
       margin-bottom: 0.5em;
     }
 
     a {
+      font-size: 0.8rem;
       margin-bottom: 0.5em;
       font-weight: 500;
       color: #141414;

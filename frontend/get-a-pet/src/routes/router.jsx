@@ -5,13 +5,17 @@ import Home from "../screens/home";
 import Login from "../screens/login";
 import Register from "../screens/register";
 
+import { UserProvider } from "../context/UserContext";
+
 const Router = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/Login" element={<Login />} />
-      <Route path="/Register" element={<Register />} />
-    </Routes>
+    <UserProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+      </Routes>
+    </UserProvider>
   );
 };
 

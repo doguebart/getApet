@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import { Container } from "./styles";
 import { Link } from "react-router-dom";
 
@@ -7,8 +7,11 @@ import Button from "../../components/form/button";
 
 import dog from "../../assets/image/authDog.jpg";
 
+import { Context } from "../../context/UserContext";
+
 function Register() {
   const [user, setUser] = useState({});
+  const { register } = useContext(Context);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -17,7 +20,7 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(user)
+    register(user);
   };
 
   return (

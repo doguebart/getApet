@@ -21,13 +21,15 @@ export const Container = styled.div`
 
   @media screen and (max-width: 1024px) {
     button {
-      padding: 2em;
+      padding: 1.2em;
+      font-size: 1.2rem;
     }
   }
 
   @media screen and (max-width: 900px) {
     button {
       padding: 1em;
+      font-size: 0.8rem;
     }
   }
 `;

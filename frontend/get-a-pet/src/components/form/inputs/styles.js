@@ -15,11 +15,19 @@ export const Container = styled.div`
     input {
       padding: 2em;
     }
+
+    ::placeholder {
+      font-size: 1.2rem;
+    }
   }
 
   @media screen and (max-width: 900px) {
     input {
       padding: 1em;
+    }
+
+    ::placeholder {
+      font-size: 0.8rem;
     }
   }
 `;

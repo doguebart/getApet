@@ -18,9 +18,16 @@ export const Container = styled.div`
     }
   }
 
-  .form-container {
+  .content {
     width: 50%;
-    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-container {
+    width: 100%;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,13 +60,24 @@ export const Container = styled.div`
   }
 
   @media screen and (max-width: 1024px) {
-    .form-container {
-      h2 {
-        max-width: 50%;
-      }
+    .img-container {
+      display: none;
+    }
 
-      form {
-        width: 100%;
+    .content {
+      .form-container {
+        h2 {
+          max-width: 50%;
+          font-size: 2rem;
+        }
+
+        form {
+          width: 100%;
+
+          span {
+            font-size: 1.2rem;
+          }
+        }
       }
     }
   }
@@ -69,16 +87,25 @@ export const Container = styled.div`
       display: none;
     }
 
-    .form-container {
+    .content {
       width: 100%;
+      padding: 0 1em;
 
-      h2 {
-        max-width: 100%;
-        font-size: 1.2rem;
-      }
-
-      form {
+      .form-container {
         width: 100%;
+
+        h2 {
+          max-width: 100%;
+          font-size: 1.2rem;
+        }
+
+        form {
+          width: 100%;
+
+          span {
+            font-size: 1rem;
+          }
+        }
       }
     }
   }

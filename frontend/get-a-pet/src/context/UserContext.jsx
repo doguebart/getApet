@@ -6,7 +6,11 @@ const Context = createContext();
 const UserProvider = ({ children }) => {
   const { isAuthenticated, register } = useAuth();
 
-  return <Context.Provider value={{ register }}>{children}</Context.Provider>;
+  return (
+    <Context.Provider value={{ isAuthenticated, register }}>
+      {children}
+    </Context.Provider>
+  );
 };
 
 export { Context, UserProvider };

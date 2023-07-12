@@ -11,7 +11,7 @@ const useAuth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem(token);
+    const token = localStorage.getItem("token");
 
     if (token) {
       api.defaults.headers.authorization = `Bearer ${JSON.parse(token)}`;

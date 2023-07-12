@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container } from "./styles";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/image/logo.png";
 
+import { Context } from "../../../context/UserContext";
+
 const NavBar = () => {
+  const { isAuthenticated } = useContext(Context);
+
   return (
     <Container>
       <div className="brand">
@@ -15,12 +19,18 @@ const NavBar = () => {
         <div className="adopt">
           <Link to="/">ADOTAR</Link>
         </div>
-        <div className="adopt">
-          <Link to="/Register">REGISTRAR</Link>
-        </div>
-        <div className="login">
-          <Link to="/Login">ENTRAR</Link>
-        </div>
+        {isAuthenticated ? (
+          <span>Logado</span>
+        ) : (
+          <>
+            <div className="adopt">
+              <Link to="/Register">REGISTRAR</Link>
+            </div>
+            <div className="login">
+              <Link to="/Login">ENTRAR</Link>
+            </div>
+          </>
+        )}
       </div>
     </Container>
   );

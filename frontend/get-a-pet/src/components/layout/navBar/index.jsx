@@ -6,7 +6,7 @@ import logo from "../../../assets/image/logo.png";
 import { Context } from "../../../context/UserContext";
 
 const NavBar = () => {
-  const { isAuthenticated } = useContext(Context);
+  const { isAuthenticated, logout } = useContext(Context);
 
   return (
     <Container>
@@ -20,7 +20,7 @@ const NavBar = () => {
           <Link to="/">ADOTAR</Link>
         </div>
         {isAuthenticated ? (
-          <span>Logado</span>
+          <span onClick={logout}>Sair</span>
         ) : (
           <>
             <div className="adopt">

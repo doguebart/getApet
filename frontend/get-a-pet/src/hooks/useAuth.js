@@ -25,7 +25,6 @@ const useAuth = () => {
 
     try {
       const data = await api.post("/users/register", user).then((response) => {
-        console.log(response);
         return response.data;
       });
 
@@ -44,7 +43,15 @@ const useAuth = () => {
     navigate("/");
   };
 
-  return { isAuthenticated, register };
+  const logout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("token");
+    api.headers.authorization = undefined;
+
+    navigate("/");
+  };
+
+  return { isAuthenticated, register, logout };
 };
 
 export default useAuth;

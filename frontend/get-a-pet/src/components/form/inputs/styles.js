@@ -13,7 +13,8 @@ export const Container = styled.div`
 
   @media screen and (max-width: 1024px) {
     input {
-      padding: 2em;
+      padding: 1em;
+      font-size: 1.2rem;
     }
 
     ::placeholder {
@@ -24,6 +25,7 @@ export const Container = styled.div`
   @media screen and (max-width: 900px) {
     input {
       padding: 1em;
+      font-size: 0.8rem;
     }
 
     ::placeholder {

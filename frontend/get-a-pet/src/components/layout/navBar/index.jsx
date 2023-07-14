@@ -20,7 +20,10 @@ const NavBar = () => {
           <Link to="/">ADOTAR</Link>
         </div>
         {isAuthenticated ? (
-          <span onClick={logout}>Sair</span>
+          <>
+            <Link to="/DashBoard">PERFIL</Link>
+            <span onClick={logout}>SAIR</span>
+          </>
         ) : (
           <>
             <div className="adopt">

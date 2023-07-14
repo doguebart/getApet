@@ -23,9 +23,33 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
 
-    .adopt {
+    > a {
+      padding: 1em;
+      text-decoration: none;
+      font-weight: 500;
+      color: #141414;
       border-right: 1px solid #dadada;
+    }
 
+    a:hover {
+      opacity: 50%;
+      transition: 0.2s;
+    }
+
+    span {
+      cursor: pointer;
+      padding: 1em;
+      text-decoration: none;
+      font-weight: 500;
+      color: #141414;
+    }
+
+    span:hover {
+      opacity: 50%;
+      transition: 0.2s;
+    }
+
+    .adopt {
       a {
         padding: 1em;
         text-decoration: none;

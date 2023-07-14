@@ -183,9 +183,9 @@ module.exports = class UserController {
     }
 
     // Validations
-    if (!name && !email && !password && !confirmPassword) {
+    if (!name && !email && !phone) {
       res.status(422).json({
-        message: "Preencha TODOS os campos antes de continuar!",
+        message: "Preencha os campos necessários antes de continuar!",
       });
       return;
     }
@@ -227,26 +227,12 @@ module.exports = class UserController {
 
     user.phone = phone;
 
-    if (!password) {
-      res.status(422).json({
-        message: "A SENHA é obrigatória!",
-      });
-      return;
-    }
-
-    if (!confirmPassword) {
-      res.status(422).json({
-        message: "Você deve confirmar sua senha antes de continuar!",
-      });
-      return;
-    }
-
-    if (confirmPassword !== password) {
+    if (password && confirmPassword && password !== confirmPassword) {
       res.status(422).json({
         message: "As senhas não coincidem!",
       });
       return;
-    } else if (password === confirmPassword && password !== null) {
+    } else if (password && password === confirmPassword) {
       // Creating new password
       const salt = await bcrypt.genSalt(12);
       const passwordHash = await bcrypt.hash(password, salt);

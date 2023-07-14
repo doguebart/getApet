@@ -10,6 +10,7 @@ import Message from "../../components/layout/message";
 
 const DashBoard = () => {
   const [user, setUser] = useState({});
+  const [preview, setPreview] = useState();
   const [token] = useState(localStorage.getItem("token") || "");
   const { setFlashMessage } = useFlashMessage();
 
@@ -26,6 +27,7 @@ const DashBoard = () => {
   }, [token]);
 
   const onFileChange = (e) => {
+    setPreview(e.target.files[0]);
     setUser({ ...user, [e.target.name]: e.target.files[0] });
   };
 
@@ -71,7 +73,18 @@ const DashBoard = () => {
       <Message />
       <div className="form-container">
         <h2>EDITAR MINHAS INFORMAÇÕES</h2>
-        <span>preview de imagem</span>
+        <div className="user-image-container">
+          {(user.image || preview) && (
+            <img
+              src={
+                preview
+                  ? URL.createObjectURL(preview)
+                  : `http://localhost:5000/images/users/${user.image}`
+              }
+              alt={user.name}
+            />
+          )}
+        </div>
         <form>
           <Input type="file" name="image" onChange={onFileChange} />
           <Input

@@ -15,6 +15,14 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
 
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      margin: 1em;
+      object-fit: cover;
+    }
+
     h2 {
       max-width: 100%;
       color: #141414;

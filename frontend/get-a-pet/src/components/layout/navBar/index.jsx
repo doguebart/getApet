@@ -22,6 +22,7 @@ const NavBar = () => {
         {isAuthenticated ? (
           <>
             <Link to="/DashBoard">PERFIL</Link>
+            <Link to="/UserPets">PETS</Link>
             <span onClick={logout}>SAIR</span>
           </>
         ) : (

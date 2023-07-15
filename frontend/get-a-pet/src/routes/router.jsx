@@ -5,6 +5,8 @@ import Home from "../screens/home";
 import Login from "../screens/login";
 import Register from "../screens/register";
 import DashBoard from "../screens/dashboard";
+import UserPets from "../screens/pets/userPets";
+import AddPet from "../screens/pets/addPet";
 
 const Router = () => {
   return (
@@ -13,6 +15,8 @@ const Router = () => {
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
       <Route path="/DashBoard" element={<DashBoard />} />
+      <Route path="/UserPets" element={<UserPets />} />
+      <Route path="/AddPet" element={<AddPet />} />
     </Routes>
   );
 };

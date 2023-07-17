@@ -230,20 +230,14 @@ export const Container = styled.div`
     }
 
     .section-2 {
+      h2 {
+        width: 25%;
+      }
+
       .cards-container {
         grid-template-columns: repeat(3, 1fr);
         justify-content: center;
         padding: 0;
-      }
-
-      .card {
-        margin: 0;
-      }
-    }
-
-    .section-2 {
-      h2 {
-        width: 25%;
       }
 
       .card {

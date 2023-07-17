@@ -7,18 +7,18 @@ const Footer = () => {
     <Container>
       <div className="footer-column">
         <h2>ADOÇÃO</h2>
-        <Link to="#">COMO FUNCIONA?</Link>
-        <Link to="#">ANIMAIS DISPONÍVEIS</Link>
+        <Link to="#" id="link">COMO FUNCIONA?</Link>
+        <Link to="#" id="link">ANIMAIS DISPONÍVEIS</Link>
       </div>
       <div className="footer-column">
         <h2>COMO AJUDAR?</h2>
-        <Link to="#">DOAÇÕES</Link>
-        <Link to="#">VOLUNTARIADO</Link>
-        <Link to="#">COMPARTILHE NAS REDES SOCIAIS</Link>
+        <Link to="#" id="link">DOAÇÕES</Link>
+        <Link to="#" id="link">VOLUNTARIADO</Link>
+        <Link to="#" id="link">COMPARTILHE NAS REDES SOCIAIS</Link>
       </div>
       <div className="footer-column">
         <h2>EVENTOS</h2>
-        <Link to="#">
+        <Link to="#" id="link">
           FIQUE POR DENTRO DOS PRÓXIMOS EVENTOS E ATIVIDADES RELACIONADOS À
           ADOÇÃO DE PETS.
         </Link>

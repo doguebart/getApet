@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1em;
+  padding: 5em 0;
   border-top: 1px solid #dadada;
 
   .footer-column {
@@ -17,20 +17,22 @@ export const Container = styled.div`
     align-items: left;
 
     h2 {
+      width: 60%;
       font-size: 1rem;
       border-bottom: 3px solid #dadada;
       margin-bottom: 0.5em;
     }
 
-    a {
+    #link {
       font-size: 0.8rem;
-      margin-bottom: 0.5em;
+      
+      margin: 0.5em 0;
       font-weight: 500;
-      color: #141414;
+      color: #cdcdcd;
     }
 
-    a:hover {
-      opacity: 50%;
+    #link:hover {
+      opacity: 80%;
       transition: 0.2s;
     }
   }

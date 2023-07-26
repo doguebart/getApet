@@ -105,6 +105,52 @@ export const Container = styled.div`
               text-align: center;
               background-color: #4fc0d0;
             }
+
+            > a {
+              width: 100%;
+              text-decoration: none;
+              text-align: center;
+              padding: 1em;
+              border-radius: 5px;
+              margin-top: 1em;
+              font-size: 1rem;
+              color: #141414;
+              background-color: #dadada;
+            }
+
+            a:hover {
+              transition: 0.2s;
+              opacity: 80%;
+            }
+
+            .controll {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 1em;
+
+              > button {
+                border: none;
+                background-color: transparent;
+              }
+
+              .icon {
+                margin: 0 1em;
+                font-size: 1.2rem;
+              }
+
+              .icon:hover {
+                opacity: 70%;
+              }
+
+              .edit {
+                color: blue;
+              }
+
+              .trash {
+                color: red;
+              }
+            }
           }
 
           .text-content.female {
@@ -131,24 +177,43 @@ export const Container = styled.div`
             }
           }
         }
-
-        a {
-          width: 100%;
-          text-decoration: none;
-          text-align: center;
-          padding: 1em;
-          border-radius: 5px;
-          margin-top: 1em;
-          font-size: 1rem;
-          color: #141414;
-          background-color: #dadada;
-        }
-
-        a:hover {
-          transition: 0.2s;
-          opacity: 80%;
-        }
       }
+    }
+  }
+
+  /* Passo 4: Estilize o modal de confirmação */
+  .confirmation-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    width: 300px;
+    text-align: center;
+
+    p {
+      font-size: 1.1rem;
+      color: #141414;
+    }
+
+    button {
+      margin: 0.5em;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #1b6b93;
+    }
+
+    button:hover {
+      opacity: 0.8;
     }
   }
 

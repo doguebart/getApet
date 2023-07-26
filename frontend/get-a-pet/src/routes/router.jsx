@@ -7,6 +7,7 @@ import Register from "../screens/register";
 import DashBoard from "../screens/dashboard";
 import UserPets from "../screens/pets/userPets";
 import AddPet from "../screens/pets/addPet";
+import EditPet from "../screens/pets/editPet";
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
       <Route path="/DashBoard" element={<DashBoard />} />
       <Route path="/UserPets" element={<UserPets />} />
       <Route path="/AddPet" element={<AddPet />} />
+      <Route path="/pet/edit/:id" element={<EditPet />} />
     </Routes>
   );
 };

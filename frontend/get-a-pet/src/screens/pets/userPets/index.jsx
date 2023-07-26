@@ -69,6 +69,7 @@ const UserPets = () => {
 
   return (
     <Container>
+      <Link to="/AddPet">ADICIONAR PET</Link>
       {pets.length === 0 && <p>Nenhum pet cadastrado!</p>}
       <section className="section-2">
         <h2>MEUS ANIMAIS</h2>
@@ -106,7 +107,7 @@ const UserPets = () => {
                     <p>Pet já adotado!</p>
                   )}
                   <div className="controll">
-                    <Link to={`/pets/edit/${pet._id}`}>
+                    <Link to={`/pet/edit/${pet._id}`}>
                       <FaEdit className="icon edit" />
                     </Link>
                     <button

@@ -16,6 +16,14 @@ export const Container = styled.div`
     padding: 1em;
     background-color: #fff;
 
+    .message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-height: 100%;
+    }
+
     h2 {
       width: 10%;
       color: #141414;
@@ -75,6 +83,30 @@ export const Container = styled.div`
           .text-content {
             display: flex;
             flex-direction: column;
+
+            #conclude-adoption {
+              width: 100%;
+              text-decoration: none;
+              text-align: center;
+              padding: 1em;
+              border-radius: 5px;
+              margin-top: 1em;
+              font-size: 1rem;
+              color: #fff;
+              background-color: green;
+              border: none;
+            }
+
+            #conclude-adoption:hover {
+              transition: 0.2s;
+              opacity: 80%;
+            }
+
+            #adopted-text {
+              margin-top: 1em;
+              color: green;
+              text-align: center;
+            }
 
             #dog-infos-title {
               font-size: 1rem;

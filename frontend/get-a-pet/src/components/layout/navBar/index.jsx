@@ -15,6 +15,10 @@ const LogoImage = styled.img`
 const CustomNavbar = styled(Navbar)`
   padding-left: 20px;
   padding-right: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 `;
 
 const CustomCollapse = styled(Navbar.Collapse)`
@@ -54,6 +58,9 @@ const NavBarComponent = () => {
               </Link>
               <Link to="/UserPets" className="nav-link mr-3">
                 PETS
+              </Link>
+              <Link to="/pet/myadoptions" className="nav-link mr-3">
+                ADOÇÕES
               </Link>
               <span className="nav-link" onClick={logout}>
                 SAIR

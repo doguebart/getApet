@@ -6,6 +6,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 
 import api from "../../../utils/api";
 import useFlashMessage from "../../../hooks/useFlashMessage";
+import Message from "../../../components/layout/message";
 
 const UserPets = () => {
   const [pets, setPets] = useState([]);
@@ -67,12 +68,36 @@ const UserPets = () => {
     setPetToRemove(null);
   };
 
+  const concludeAdoption = async (id) => {
+    let msgType = "success";
+
+    const data = await api
+      .patch(`/pets/conclude/${id}`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        msgType = "error";
+        return error.response.data;
+      });
+
+    setFlashMessage(data.message, msgType);
+  };
+
   return (
     <Container>
       <Link to="/AddPet">ADICIONAR PET</Link>
       {pets.length === 0 && <p>Nenhum pet cadastrado!</p>}
       <section className="section-2">
         <h2>MEUS ANIMAIS</h2>
+
+        <div className="message">
+          <Message />
+        </div>
 
         <div className="cards-container">
           {pets.map((pet) => (
@@ -100,24 +125,35 @@ const UserPets = () => {
                     <span id="dog-infos-title">Sexo</span>
                     <span id="sex">{pet.sex}</span>
                   </div>
-                  <Link to="">SABER MAIS</Link>
+                  <Link to={`/pet/${pet._id}`}>SABER MAIS</Link>
                   {pet.available ? (
-                    <>{pet.adopter && <button>CONCLUIR ADOÇÃO</button>}</>
+                    <>
+                      {pet.adopter && (
+                        <button
+                          onClick={() => {
+                            concludeAdoption(pet._id);
+                          }}
+                          id="conclude-adoption"
+                        >
+                          CONCLUIR ADOÇÃO
+                        </button>
+                      )}
+                      <div className="controll">
+                        <Link to={`/pet/edit/${pet._id}`}>
+                          <FaEdit className="icon edit" />
+                        </Link>
+                        <button
+                          onClick={() => {
+                            handleRemovePetConfirmation(pet._id);
+                          }}
+                        >
+                          <FaTrash className="icon trash" />
+                        </button>
+                      </div>
+                    </>
                   ) : (
-                    <p>Pet já adotado!</p>
+                    <p id="adopted-text">Pet já adotado!</p>
                   )}
-                  <div className="controll">
-                    <Link to={`/pet/edit/${pet._id}`}>
-                      <FaEdit className="icon edit" />
-                    </Link>
-                    <button
-                      onClick={() => {
-                        handleRemovePetConfirmation(pet._id);
-                      }}
-                    >
-                      <FaTrash className="icon trash" />
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>

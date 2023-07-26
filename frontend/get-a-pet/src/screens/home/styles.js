@@ -100,6 +100,12 @@ export const Container = styled.div`
             display: flex;
             flex-direction: column;
 
+            #adopted-text {
+              margin-top: 1em;
+              color: green;
+              text-align: center;
+            }
+
             #dog-infos-title {
               font-size: 1rem;
               color: #141414;

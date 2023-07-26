@@ -57,7 +57,11 @@ function Home() {
                     <span id="dog-infos-title">Sexo</span>
                     <span id="sex">{pet.sex}</span>
                   </div>
-                  <Link to="">SABER MAIS</Link>
+                  {pet.available ? (
+                    <Link to={`/pet/${pet._id}`}>SABER MAIS</Link>
+                  ) : (
+                    <p id="adopted-text">Adotado!</p>
+                  )}
                 </div>
               </div>
             </div>

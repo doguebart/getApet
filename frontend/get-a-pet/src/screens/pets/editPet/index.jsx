@@ -114,7 +114,7 @@ const EditPet = () => {
             : pet.images &&
               pet.images.map((image, index) => (
                 <img
-                  src={`http://localhost:5000/images/pets/${image}`}
+                  src={`https://getapet-api-0915272b9344.herokuapp.com/images/pets/${image}`}
                   alt={pet.name}
                   key={`${pet.name}+${index}`}
                 />

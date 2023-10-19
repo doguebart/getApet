@@ -29,7 +29,7 @@ const Adoptions = () => {
             <div className="card">
               <div className="img-container">
                 <img
-                  src={`http://localhost:5000/images/pets/${pet.images[0]}`}
+                  src={`https://getapet-api-0915272b9344.herokuapp.com/images/pets/${pet.images[0]}`}
                   alt={pet.name}
                 />
               </div>

@@ -79,7 +79,7 @@ const DashBoard = () => {
               src={
                 preview
                   ? URL.createObjectURL(preview)
-                  : `http://localhost:5000/images/users/${user.image}`
+                  : `https://getapet-api-0915272b9344.herokuapp.com/images/users/${user.image}`
               }
               alt={user.name}
             />
